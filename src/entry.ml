@@ -75,7 +75,7 @@ let begin_program pkg view_in_browser =
     |> fun signatures ->
     let s = Filename.temp_file "berber-docs" "" in
     Soup.write_file (s ^ ".ml") signatures;
-    Printf.sprintf "src-hilite-lesspipe.sh %s.ml | less" s
+    Printf.sprintf "src-hilite-lesspipe.sh %s.ml | less -R" s
     |> Sys.command
     |> ignore
 
