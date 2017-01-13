@@ -1,0 +1,30 @@
+# -*- conf -*-
+OASISFormat:   0.4
+Name:          berber
+Version:       0.0.1
+Synopsis:      OCaml documentation helper
+Authors:       Edgar Aroutiounian <edgar.factorial@gmail.com>
+Maintainers:   Edgar Aroutiounian <edgar.factorial@gmail.com>
+Homepage:      https://github.com/fxfactorial/berber
+License:       BSD-3-clause
+OCamlVersion:  >= 4.04.0
+AlphaFeatures: ocamlbuild_more_args
+Plugins:       META (0.4), DevFiles (0.4)
+BuildTools:    ocamlbuild, ocamldoc
+Description:   Look up OCaml documentation.
+
+Executable berber
+  Path: src
+  BuildTools:ocamlbuild
+  install: true
+  MainIs: entry.ml
+  NativeOpt: -g -w +a-4-40..42-44-45-48
+  ByteOpt: -g -w +a-4-40..42-44-45-48
+  BuildDepends:
+    cmdliner (>= 0.9.8), podge (>= 0.8.0), 
+    lambdasoup (>= 0.6.1)
+
+SourceRepository master
+  Type:     git
+  Location: https://github.com/fxfactorial/berber.git
+  Browser:  https://github.com/fxfactorial/berber

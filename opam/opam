@@ -1,0 +1,42 @@
+# -*- conf -*-
+opam-version: "1.2"
+name: "berber"
+version: "0.0.1"
+maintainer: "Edgar Aroutiounian <edgar.factorial@gmail.com>"
+authors: [ "Edgar Aroutiounian <edgar.factorial@gmail.com>" ]
+license: "BSD-3-clause"
+homepage: "https://github.com/fxfactorial/berber"
+dev-repo: "https://github.com/fxfactorial/berber.git"
+bug-reports: "https://github.com/fxfactorial/berber/issues"
+build: [
+  ["oasis" "setup"]
+  ["ocaml" "setup.ml" "-configure" "--prefix" prefix]
+  ["ocaml" "setup.ml" "-build"]
+]
+install: ["ocaml" "setup.ml" "-install"]
+remove: [
+  ["ocaml" "%{etc}%/berber/setup.ml" "-C" "%{etc}%/berber" "-uninstall"]
+]
+build-test: [
+  ["oasis" "setup"]
+  ["ocaml" "setup.ml" "-configure" "--enable-tests"]
+  ["ocaml" "setup.ml" "-build"]
+  ["ocaml" "setup.ml" "-test"]
+]
+depexts : [
+  [["osx"] ["source-highlight"]]
+  [["debian"] ["source-highlight"]]
+  [["ubuntu"] ["source-highlight"]]
+]
+depends: [
+  "cmdliner" {build & >= "0.9.8"}
+  "lambdasoup" {build & >= "0.6.1"}
+  "oasis" {build & >= "0.4.7"}
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "podge" {build & >= "0.8.0"}
+]
+messages: [
+  "Install source-highlight from your package manager"
+]
+available: [ ocaml-version >= "4.04.0" ]

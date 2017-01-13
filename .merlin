@@ -1,0 +1,9 @@
+B _build/src
+B _build/lib
+
+S src
+S lib
+
+FLG -w +a-4-40..42-44-45-48
+
+PKG podge cmdliner berber lambdasoup
